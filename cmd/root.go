@@ -24,13 +24,16 @@ var rootCmd = &cobra.Command{
 		partition := 0
 
 		c := consumer.NewConsumerService(topic, partition)
+		e := consumer.NewEmailConsumerService("email", partition)
 		p := producer.NewProducerService(topic, partition)
 
 		c.Start()
+		e.Start()
 
 		app := application{
-			Consumer: c,
-			Producer: p,
+			Consumer:      c,
+			EmailConsumer: e,
+			Producer:      p,
 		}
 
 		app.Run(port)

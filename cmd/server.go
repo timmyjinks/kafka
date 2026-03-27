@@ -11,8 +11,9 @@ import (
 )
 
 type application struct {
-	Consumer *consumer.ConsumerService
-	Producer *producer.ProducerService
+	Consumer      *consumer.ConsumerService
+	EmailConsumer *consumer.EmailConsumerService
+	Producer      *producer.ProducerService
 }
 
 type MessageRequest struct {
