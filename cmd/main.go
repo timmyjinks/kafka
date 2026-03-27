@@ -1,22 +1,11 @@
 package main
 
 import (
-	"github.com/timmyjinks/simple-kafka/consumer"
-	"github.com/timmyjinks/simple-kafka/producer"
+	"log"
 )
 
 func main() {
-	topic := "message"
-	partition := 0
-	c := consumer.NewConsumerService(topic, partition)
-	p := producer.NewProducerService(topic, partition)
-
-	c.Start()
-
-	app := application{
-		Consumer: c,
-		Producer: p,
+	if err := commandCmd.Execute(); err != nil {
+		log.Println(err)
 	}
-
-	app.Run(":8081")
 }
